@@ -23,6 +23,7 @@
 #
 
 require 'new_relic/control'
+puts "Loading custom NewRelic Agent"
 if defined?(Merb) && defined?(Merb::BootLoader)
   module NewRelic
     class MerbBootLoader < Merb::BootLoader
