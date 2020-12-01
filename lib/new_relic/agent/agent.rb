@@ -473,7 +473,8 @@ module NewRelic
           def defer_for_resque?
             NewRelic::Agent.config[:dispatcher] == :resque &&
               NewRelic::LanguageSupport.can_fork? &&
-              !PipeChannelManager.listener.started?
+              !PipeChannelManager.listener.started? &&
+              ENV.fetch("RESQUE_SKIP_DEFERRAL") { "false" } == "false"
           end
 
           def in_resque_child_process?
