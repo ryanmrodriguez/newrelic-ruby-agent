@@ -147,6 +147,8 @@ module NewRelic
     end
 
     def check_for_resque
+      NewRelic::Agent.logger.debug "NewRelic agent executable identified as: #{executable}. ARGV: #{ARGV.join(' ')}"
+
       has_queue              = ENV['QUEUE'] || ENV['QUEUES']
       resque_rake            = executable == 'rake' && ARGV.include?('resque:work')
       resque_pool_rake       = executable == 'rake' && ARGV.include?('resque:pool')
