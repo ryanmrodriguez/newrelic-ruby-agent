@@ -6,8 +6,7 @@ DependencyDetection.defer do
   @name = :resque
 
   depends_on do
-    # defined?(::Resque::Job) && !NewRelic::Agent.config[:disable_resque]
-    !NewRelic::Agent.config[:disable_resque]
+    defined?(::Resque::Job) && !NewRelic::Agent.config[:disable_resque]
   end
 
   executes do
