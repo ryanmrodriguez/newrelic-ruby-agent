@@ -158,6 +158,8 @@ module NewRelic
         (has_queue && resque_rake) ||
         (resque_pool_executable || resque_pool_rake)
 
+      NewRelic::Agent.logger.debug "Queue? #{has_queue} Using Resque? #{using_resque}. Pool? #{resque_pool_executable}. Rake Pool? #{resque_pool_rake}"
+
       @discovered_dispatcher = :resque if using_resque
     end
 
