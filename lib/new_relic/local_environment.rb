@@ -154,7 +154,7 @@ module NewRelic
       resque_pool_rake       = executable == 'rake' && ARGV.include?('resque:pool')
       resque_pool_executable = executable == 'resque-pool' && defined?(::Resque::Pool)
 
-      NewRelic::Agent.logger.debug "Resque Rake? #{resque_rake}. Check exe: #{executable == 'rake'}. Argv Include #{ARGV.include?('resque:work')}"
+      NewRelic::Agent.logger.debug "Resque Rake? #{resque_rake}. Resque defined #{defined?(::Resque)}. #{(has_queue && resque_rake)}"
 
       using_resque = defined?(::Resque) &&
         (has_queue && resque_rake) ||
