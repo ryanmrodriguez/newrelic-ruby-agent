@@ -30,6 +30,7 @@ DependencyDetection.defer do
 
         def perform
           begin
+            NewRelic::Agent.logger.debug "Payload class name is #{self.payload_class}"
             perform_action_with_newrelic_trace(
               :name => 'perform',
               :class_name => self.payload_class,
