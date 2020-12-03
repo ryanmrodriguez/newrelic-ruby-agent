@@ -1000,6 +1000,7 @@ module NewRelic
           if sample_count > 0
             NewRelic::Agent.logger.debug("Sending #{sample_count} items to #{endpoint}")
             send_data_to_endpoint(endpoint, payload, container)
+            NewRelic::Agent.logger.debug "Payload is #{payload}"
           end
         end
 
