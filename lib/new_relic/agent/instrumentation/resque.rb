@@ -40,6 +40,7 @@ DependencyDetection.defer do
                 :'job.resque.args',
                 NewRelic::Agent::AttributeFilter::DST_NONE)
 
+              NewRelic::Agent.logger.debug "Payload self is #{self}"
               NewRelic::Agent.logger.debug "Payload class name is #{self.payload_class}"
               perform_without_instrumentation
             end
